@@ -16,30 +16,29 @@ class ProfilePage extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         children: [
           // Profile Header Section
-          const Row(
-            children: [
-              CircleAvatar(
-                radius: 40,
-                // Placeholder image - replace with user's actual avatar if available
-                backgroundImage: NetworkImage('https://placehold.co/100x100/0077b6/ffffff?text=User'),
-                child: Icon(Icons.person, size: 40, color: Colors.white70), // Fallback icon
-              ),
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'John Doe', // Placeholder user name
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'john.doe@example.com', // Placeholder user email
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
-                ],
-              ),
-            ],
-          ),
+const Row(
+  children: [
+    CircleAvatar(
+      radius: 40,
+      backgroundImage: AssetImage('images/profile.jpg'),
+    ),
+    SizedBox(width: 20),
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Eyad Alshareef', // Placeholder user name
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          'eyadsd@just.edu.jo', // Placeholder user email
+          style: TextStyle(fontSize: 16, color: Colors.grey),
+        ),
+      ],
+    ),
+  ],
+),
+
           const SizedBox(height: 30),
           const Divider(), // Separator
 
