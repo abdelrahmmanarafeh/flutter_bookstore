@@ -84,6 +84,10 @@ class _MainNavigatorState extends State<MainNavigator> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index; // Update the selected index
+      // When navigating to the cart tab, update the CartPage with the current cart items
+      if (index == 2) {
+        _pages[index] = CartPage(cartItems: _cartItems, onRemoveFromCart: _removeFromCart);
+      }
     });
   }
 
