@@ -90,7 +90,9 @@ class BookDetailPage extends StatelessWidget {
              // Genre
             Chip(
               label: Text(book.genre),
-              backgroundColor: Colors.blue.shade50,
+              backgroundColor: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.blue.shade900 // Darker background in dark mode
+                  : Colors.blue.shade50, // Light background in light mode
             ),
             const SizedBox(height: 20.0),
 
@@ -116,7 +118,9 @@ class BookDetailPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   textStyle: Theme.of(context).textTheme.titleMedium,
-                  backgroundColor: Theme.of(context).primaryColor, // Use theme's primary color
+                  backgroundColor: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.blue.shade700 // Lighter color in dark mode
+                      : Theme.of(context).primaryColor, // Primary color in light mode
                   foregroundColor: Colors.white, // Text color for the button
                 ),
                 onPressed: () {
