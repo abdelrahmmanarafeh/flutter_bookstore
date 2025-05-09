@@ -10,10 +10,12 @@ class CartPage extends StatelessWidget {
   final List<Book> cartItems;
   // Callback function to remove an item from the cart (passed from MainNavigator)
   final Function(Book) onRemoveFromCart;
+  final VoidCallback onCheckout;
 
   const CartPage({
     super.key,
     required this.cartItems,
+ required this.onCheckout,
     required this.onRemoveFromCart,
   });
 
@@ -118,11 +120,7 @@ class CartPage extends StatelessWidget {
                              textStyle: Theme.of(context).textTheme.titleMedium,
                            ),
                            onPressed: () {
-                             // Handle checkout logic here
-                             ScaffoldMessenger.of(context).showSnackBar(
-                               const SnackBar(content: Text('Checkout functionality not implemented.')),
-                             );
-                           },
+                             onCheckout();                         },
                            child: const Text('Proceed to Checkout'),
                          ),
                        ),

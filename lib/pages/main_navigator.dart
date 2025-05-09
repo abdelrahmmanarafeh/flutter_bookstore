@@ -24,6 +24,9 @@ class _MainNavigatorState extends State<MainNavigator> {
   // In a real app, use a more robust state management solution (Provider, Riverpod, etc.)
   final List<Book> _cartItems = [];
 
+  // List to hold purchase history (list of lists of books)
+  final List<List<Book>> _purchaseHistory = [];
+
   // Callback function to add a book to the cart.
   // This function is passed down to pages that need to add items (e.g., BookDetailPage).
   void _addToCart(Book book) {
@@ -65,6 +68,14 @@ class _MainNavigatorState extends State<MainNavigator> {
     });
   }
 
+  // Method to handle the checkout process
+  void _checkout(List<Book> itemsToCheckout) {
+    setState(() {
+      _purchaseHistory.add(List.from(itemsToCheckout)); // Save a copy of the current cart
+      _cartItems.clear(); // Clear the cart
+    });
+  }
+
   // List of the main pages corresponding to the bottom navigation bar items.
   // Note: We pass the necessary callbacks and data down to the pages.
   late final List<Widget> _pages;
@@ -76,8 +87,8 @@ class _MainNavigatorState extends State<MainNavigator> {
     _pages = <Widget>[
       HomePage(onAddToCart: _addToCart), // Pass addToCart callback
       SearchPage(onAddToCart: _addToCart), // Pass addToCart callback
-      CartPage(cartItems: _cartItems, onRemoveFromCart: _removeFromCart), // Pass cart items and remove callback
-      const ProfilePage(), // Profile page is currently stateless
+      CartPage(cartItems: _cartItems, onRemoveFromCart: _removeFromCart, onCheckout: () => _checkout(_cartItems)), // Pass cart items, remove callback, and checkout callback
+      ProfilePage(purchaseHistory: _purchaseHistory), // Pass purchase history to ProfilePage
     ];
   }
 
@@ -88,7 +99,10 @@ class _MainNavigatorState extends State<MainNavigator> {
       _selectedIndex = index; // Update the selected index
       // When navigating to the cart tab, update the CartPage with the current cart items
       if (index == 2) {
-        _pages[index] = CartPage(cartItems: _cartItems, onRemoveFromCart: _removeFromCart);
+        _pages[index] = CartPage(cartItems: _cartItems, onRemoveFromCart: _removeFromCart, onCheckout: () => _checkout(_cartItems));
+      } else if (index == 3) {
+        // When navigating to the profile tab, update ProfilePage with the current purchase history
+         _pages[index] = ProfilePage(purchaseHistory: _purchaseHistory);
       }
     });
   }

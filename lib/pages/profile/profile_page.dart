@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import '../../models/book.dart'; // Import Book model
 
 // ProfilePage displays user information and potentially purchase history.
 // Currently a placeholder StatelessWidget. Could become StatefulWidget
 // if profile data needs to be fetched or updated dynamically.
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  final List<List<Book>> purchaseHistory; // List of past purchases
+
+  const ProfilePage({
+    super.key,
+    required this.purchaseHistory,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile'),
+        title: const Text('My Profile'), // Set title
       ),
       body: ListView( // Use ListView for potentially long content
         padding: const EdgeInsets.all(20.0),
@@ -48,9 +54,40 @@ const Row(
             title: const Text('Purchase History'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () {
-              // Navigate to Purchase History page (not implemented)
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Purchase History page not implemented.')),
+              // Show a dialog with purchase history
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Purchase History'),
+                    content: purchaseHistory.isEmpty
+                        ? const Text('You have no past purchases.')
+                        : SingleChildScrollView( // Allow scrolling if history is long
+                            child: ListBody(
+                              children: purchaseHistory.asMap().entries.map((entry) {
+                                  int purchaseIndex = entry.key;
+                                  List<Book> purchase = entry.value;
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Purchase ${purchaseIndex + 1}:', style: TextStyle(fontWeight: FontWeight.bold)),
+                                    ...purchase.map((book) => Text('- ${book.title}')).toList(), // List book titles in this purchase
+                                    SizedBox(height: 10), // Spacing between purchases
+                                  ],
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('Close'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
               );
             },
           ),
