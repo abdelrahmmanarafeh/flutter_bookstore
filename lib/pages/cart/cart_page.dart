@@ -111,7 +111,9 @@ class CartPage extends StatelessWidget {
                          child: ElevatedButton(
                            style: ElevatedButton.styleFrom(
                              padding: const EdgeInsets.symmetric(vertical: 15.0),
-                             backgroundColor: Theme.of(context).primaryColor,
+                             backgroundColor: Theme.of(context).brightness == Brightness.dark
+                                 ? Colors.green.shade700 // Lighter color in dark mode
+                                 : Theme.of(context).primaryColor, // Primary color in light mode
                              foregroundColor: Colors.white,
                              textStyle: Theme.of(context).textTheme.titleMedium,
                            ),
