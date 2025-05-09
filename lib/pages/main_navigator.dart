@@ -65,6 +65,7 @@ class _MainNavigatorState extends State<MainNavigator> {
             duration: const Duration(seconds: 2),
           ),
         );
+        _onItemTapped(2); // Navigate to and rebuild the cart page
     });
   }
 
@@ -72,6 +73,7 @@ class _MainNavigatorState extends State<MainNavigator> {
   void _checkout(List<Book> itemsToCheckout) {
     setState(() {
       _purchaseHistory.add(List.from(itemsToCheckout)); // Save a copy of the current cart
+      _onItemTapped(2); // Navigate to and rebuild the cart page
       _cartItems.clear(); // Clear the cart
     });
   }
