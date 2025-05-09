@@ -127,7 +127,9 @@ class _MainNavigatorState extends State<MainNavigator> {
             // The index of the currently selected item.
             currentIndex: _selectedIndex,
             // Color for selected item icons and labels.
-            selectedItemColor: Theme.of(context).primaryColor,
+            selectedItemColor: Theme.of(context).brightness == Brightness.dark
+                ? Colors.amberAccent // Bright color in dark mode
+                : Theme.of(context).primaryColor, // Primary color in light mode
             // Color for unselected item icons and labels.
             unselectedItemColor: Colors.grey,
             // Ensures labels are always shown
