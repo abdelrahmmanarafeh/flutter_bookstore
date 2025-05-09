@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../provider/theme_provider.dart';
 import '../models/book.dart'; // Import Book model
 import 'home/home_page.dart';
 import 'search/search_page.dart';
@@ -93,46 +95,56 @@ class _MainNavigatorState extends State<MainNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // The body displays the currently selected page from the _pages list.
-      body: IndexedStack( // Use IndexedStack to keep page state alive
-         index: _selectedIndex,
-         children: _pages,
-      ),
-      // Bottom navigation bar for switching between main pages.
-      bottomNavigationBar: BottomNavigationBar(
-        // List of items in the navigation bar.
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return Scaffold(
+          // The body displays the currently selected page from the _pages list.
+          body: IndexedStack( // Use IndexedStack to keep page state alive
+             index: _selectedIndex,
+             children: _pages,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+          // Bottom navigation bar for switching between main pages.
+          bottomNavigationBar: BottomNavigationBar(
+            // List of items in the navigation bar.
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Search',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart),
+                label: 'Cart',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
+            // The index of the currently selected item.
+            currentIndex: _selectedIndex,
+            // Color for selected item icons and labels.
+            selectedItemColor: Theme.of(context).primaryColor,
+            // Color for unselected item icons and labels.
+            unselectedItemColor: Colors.grey,
+            // Ensures labels are always shown
+            showUnselectedLabels: true,
+            // Type fixed ensures the background color is applied correctly
+            type: BottomNavigationBarType.fixed,
+            // Callback function when an item is tapped.
+            onTap: _onItemTapped,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              themeProvider.toggleTheme(!themeProvider.isDarkMode);
+            },
+            child: const Icon(Icons.brightness_6),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        // The index of the currently selected item.
-        currentIndex: _selectedIndex,
-        // Color for selected item icons and labels.
-        selectedItemColor: Theme.of(context).primaryColor,
-        // Color for unselected item icons and labels.
-        unselectedItemColor: Colors.grey,
-        // Ensures labels are always shown
-        showUnselectedLabels: true,
-        // Type fixed ensures the background color is applied correctly
-        type: BottomNavigationBarType.fixed,
-        // Callback function when an item is tapped.
-        onTap: _onItemTapped,
-      ),
+        );
+      }
     );
   }
 }
