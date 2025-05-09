@@ -32,7 +32,10 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bookstore Home'),
+        title: Text(
+          'Bookstore Home',
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+        ),
         // Optional: Add actions like a search icon if needed,
         // although search has its own tab.
         // actions: [
