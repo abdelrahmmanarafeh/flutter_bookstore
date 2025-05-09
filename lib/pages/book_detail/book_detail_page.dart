@@ -78,7 +78,10 @@ class BookDetailPage extends StatelessWidget {
             Text(
               '\$${book.price.toStringAsFixed(2)}', // Format price to 2 decimal places
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).secondaryHeaderColor,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.yellow[200] // Lighter color in dark mode
+                    : Theme.of(context).primaryColor, // Primary color in light mode
+
                 fontWeight: FontWeight.bold,
               ),
             ),

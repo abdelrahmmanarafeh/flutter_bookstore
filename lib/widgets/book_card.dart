@@ -85,7 +85,9 @@ class BookCard extends StatelessWidget {
                     Text(
                       '\$${book.price.toStringAsFixed(2)}',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.yellow[200]
+                            : Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 1,

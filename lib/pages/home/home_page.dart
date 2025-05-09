@@ -91,7 +91,9 @@ class HomePage extends StatelessWidget {
             children: categories.map((category) {
               return Chip(
                 label: Text(category),
-                backgroundColor: Colors.blue.shade50, // Light background for chips
+                backgroundColor: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.blue.shade900 // Darker background in dark mode
+                    : Colors.blue.shade50, // Light background for chips
                 side: BorderSide(color: Colors.blue.shade200), // Subtle border
                 // Optional: Add onTap to navigate to a category-specific page
                 // onTap: () {
