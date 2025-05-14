@@ -13,7 +13,7 @@ class BookCard extends StatelessWidget {
     required this.book,
     this.onTap,
   });
-
+ 
   @override
   Widget build(BuildContext context) {
     return Card(
