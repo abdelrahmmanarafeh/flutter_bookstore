@@ -28,7 +28,7 @@ class BookDetailPage extends StatelessWidget {
             Center(
               child: Hero( // Optional: Add Hero animation for smoother transition
                 tag: 'bookCover_${book.id}', // Unique tag for the Hero animation
-                child: Image.network(
+                child: Image.asset(
                   book.coverImageUrl,
                   height: 300,
                   fit: BoxFit.cover,
@@ -40,21 +40,7 @@ class BookDetailPage extends StatelessWidget {
                       child: const Center(child: Icon(Icons.book, size: 50, color: Colors.grey)),
                     );
                   },
-                   // Loading indicator while the image loads
-                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                    if (loadingProgress == null) return child; // Image loaded
-                    return Container(
-                       height: 300,
-                       color: Colors.grey[300],
-                       child: Center(
-                         child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                       ),
-                    );
-                  },
+
                 ),
               ),
             ),

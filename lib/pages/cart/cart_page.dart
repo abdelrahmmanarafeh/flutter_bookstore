@@ -47,7 +47,7 @@ class CartPage extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
                         child: ListTile(
                           // Book Cover Image (small)
-                          leading: Image.network(
+                          leading: Image.asset(
                             book.coverImageUrl,
                             width: 50,
                             height: 75,
