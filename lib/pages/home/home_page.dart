@@ -36,16 +36,6 @@ class HomePage extends StatelessWidget {
           'Bookstore Home',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        // Optional: Add actions like a search icon if needed,
-        // although search has its own tab.
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.search),
-        //     onPressed: () {
-        //       // Navigate to search page or handle search activation
-        //     },
-        //   ),
-        // ],
       ),
       body: ListView( // Use ListView for scrollable content
         padding: const EdgeInsets.all(16.0),
@@ -102,7 +92,7 @@ class HomePage extends StatelessWidget {
                 // onTap: () {
                 //   print('Category $category tapped');
                 //   // Navigate to a page showing books in this category
-                // },
+                },
               );
             }).toList(),
           ),
