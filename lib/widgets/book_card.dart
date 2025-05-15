@@ -39,7 +39,7 @@ class BookCard extends StatelessWidget {
                   fit: BoxFit.cover,
                   // Error placeholder
                   errorBuilder: (context, error, stackTrace) {
-                    return Container(
+                    return Container( 
                       color: Colors.grey[200],
                       child: const Center(
                         child: Icon(Icons.book, color: Colors.grey, size: 40),
