@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                 // onTap: () {
                 //   print('Category $category tapped');
                 //   // Navigate to a page showing books in this category
-                },
+                // },
               );
             }).toList(),
           ),
