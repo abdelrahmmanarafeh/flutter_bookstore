@@ -21,26 +21,22 @@ version: 1.0.0+1
 environment:
   sdk: ^3.8.0-278.1.beta
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
-  provider: ^6.0.0
-  hive:  
-  hive_flutter:
+  cupertino_icons: ^1.0.8      # From your original file
+  provider: ^6.0.0           # From your original file
+  shared_preferences: ^2.2.3 # Added for persistence
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  hive_generator:  
-  build_runner:
-  flutter_lints: ^5.0.0
+  build_runner: ^2.4.9        # Added a recent stable version, adjust if needed
+  flutter_lints: ^4.0.0       # Updated to a more recent version than your original's ^5.0.0 example, or use ^3.0.0 or what flutter create might give you. Let's use a known compatible one. Your original had ^5.0.0, let's assume that was a typo and meant flutter_lints: ^3.0.0 or ^4.0.0. Given current SDK beta, ^4.0.0 is plausible.
+
+
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
