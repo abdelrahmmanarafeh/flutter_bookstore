@@ -88,11 +88,6 @@ class HomePage extends StatelessWidget {
                     ? Colors.blue.shade900 // Darker background in dark mode
                     : Colors.blue.shade50, // Light background for chips
                 side: BorderSide(color: Colors.blue.shade200), // Subtle border
-                // Optional: Add onTap to navigate to a category-specific page
-                // onTap: () {
-                //   print('Category $category tapped');
-                //   // Navigate to a page showing books in this category
-                // },
               );
             }).toList(),
           ),

@@ -76,8 +76,6 @@ class CartPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          // Optional: Navigate to detail page on tap
-                          // onTap: () { /* Navigate to BookDetailPage if needed */ },
                         ),
                       );
                     },
