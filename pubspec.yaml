@@ -1,82 +1,27 @@
 name: myapp
 description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
+publish_to: 'none'
 version: 1.0.0+1
-
 environment:
   sdk: ^3.8.0-278.1.beta
-
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8      # From your original file
-  provider: ^6.0.0           # From your original file
-  shared_preferences: ^2.2.3 # Added for persistence
+  cupertino_icons: ^1.0.8     
+  provider: ^6.0.0           
+  shared_preferences: ^2.2.3 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.4.9        # Added a recent stable version, adjust if needed
-  flutter_lints: ^4.0.0       # Updated to a more recent version than your original's ^5.0.0 example, or use ^3.0.0 or what flutter create might give you. Let's use a known compatible one. Your original had ^5.0.0, let's assume that was a typo and meant flutter_lints: ^3.0.0 or ^4.0.0. Given current SDK beta, ^4.0.0 is plausible.
+  build_runner: ^2.4.9        
+  flutter_lints: ^4.0.0      
 
 
-
-
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
     - images/
-
-  #   - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package

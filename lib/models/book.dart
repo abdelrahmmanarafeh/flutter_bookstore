@@ -1,15 +1,12 @@
-// Defines the data structure for a book.
 class Book {
   final String id;
   final String title;
   final String author;
   final String description;
   final double price;
-  final String coverImageUrl; // URL for the book cover image
-  final String genre; // Genre of the book
+  final String coverImageUrl;
+  final String genre;
 
-  // Constructor for the Book class.
-  // All fields are required.
   const Book({
     required this.id,
     required this.title,
@@ -20,7 +17,7 @@ class Book {
     required this.genre,
   });
   
-    factory Book.fromJson(Map<String, dynamic> json) { // <<<< Definition of fromJson
+    factory Book.fromJson(Map<String, dynamic> json) { 
     return Book(
       id: json['id'] as String,
       title: json['title'] as String,

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../models/book.dart'; // Import Book model
+import '../../models/book.dart';
 
-// CartPage displays items added to the shopping cart.
-// It could be StatelessWidget if cart state is managed externally (like in MainNavigator).
-// If managing cart state locally, it would need to be StatefulWidget.
-// Here, it receives cart data and callbacks, so StatelessWidget is suitable.
+
 class CartPage extends StatelessWidget {
-  // List of books currently in the cart (passed from MainNavigator)
   final List<Book> cartItems;
-  // Callback function to remove an item from the cart (passed from MainNavigator)
   final Function(Book) onRemoveFromCart;
   final VoidCallback onCheckout;
 
@@ -19,21 +14,19 @@ class CartPage extends StatelessWidget {
     required this.onRemoveFromCart,
   });
 
-  // Calculate the total price of items in the cart
   double get _totalPrice => cartItems.fold(0.0, (sum, item) => sum + item.price);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping Cart (${cartItems.length})'), // Show item count in title
+        title: Text('Shopping Cart (${cartItems.length})'),
       ),
       body: Column(
         children: [
-          // List of Cart Items
-          Expanded( // Make the list scrollable and take available space
+          Expanded( 
             child: cartItems.isEmpty
-                ? const Center( // Show message if cart is empty
+                ? const Center(
                     child: Text(
                       'Your cart is empty.',
                       style: TextStyle(fontSize: 18.0, color: Colors.grey),
@@ -43,10 +36,9 @@ class CartPage extends StatelessWidget {
                     itemCount: cartItems.length,
                     itemBuilder: (context, index) {
                       final book = cartItems[index];
-                      return Card( // Use Card for better visual separation
+                      return Card(
                         margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
                         child: ListTile(
-                          // Book Cover Image (small)
                           leading: Image.asset(
                             book.coverImageUrl,
                             width: 50,
@@ -55,12 +47,10 @@ class CartPage extends StatelessWidget {
                             errorBuilder: (context, error, stackTrace) =>
                                 const Icon(Icons.broken_image, size: 50),
                           ),
-                          // Book Title and Author
                           title: Text(book.title),
                           subtitle: Text(book.author),
-                          // Price and Remove Button
                           trailing: Row(
-                            mainAxisSize: MainAxisSize.min, // Keep row tight
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
                                 '\$${book.price.toStringAsFixed(2)}',
@@ -70,7 +60,6 @@ class CartPage extends StatelessWidget {
                                 icon: const Icon(Icons.remove_circle_outline, color: Colors.red),
                                 tooltip: 'Remove from cart',
                                 onPressed: () {
-                                  // Call the callback function to remove the item
                                   onRemoveFromCart(book);
                                 },
                               ),
@@ -82,11 +71,10 @@ class CartPage extends StatelessWidget {
                   ),
           ),
 
-          // Total Price and Checkout Button (only show if cart is not empty)
           if (cartItems.isNotEmpty)
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Card( // Card for summary section
+              child: Card( 
                  elevation: 4,
                  child: Padding(
                    padding: const EdgeInsets.all(16.0),
@@ -106,12 +94,12 @@ class CartPage extends StatelessWidget {
                          ],
                        ),
                        const SizedBox(height: 16.0),
-                       SizedBox( // Make button full width
+                       SizedBox(
                          width: double.infinity,
                          child: ElevatedButton(
                            style: ElevatedButton.styleFrom(
                              padding: const EdgeInsets.symmetric(vertical: 15.0),
-                             backgroundColor: Theme.of(context).primaryColor, // Primary color in light mode
+                             backgroundColor: Theme.of(context).primaryColor,
                              foregroundColor: Colors.white,
                              textStyle: Theme.of(context).textTheme.titleMedium,
                            ),

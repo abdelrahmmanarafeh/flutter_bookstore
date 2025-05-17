@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../models/book.dart';         // Import Book model
-import '../../data/mock_data.dart';     // Import mock data
-import '../book_detail/book_detail_page.dart'; // Import detail page
-import '../../widgets/book_card.dart';   // Import reusable book card widget
+import '../../models/book.dart';    
+import '../../data/mock_data.dart';   
+import '../book_detail/book_detail_page.dart';
+import '../../widgets/book_card.dart';
 
-// HomePage displays featured books and categories.
-// It's a StatelessWidget as its content is based on the initial data
-// and doesn't change internally based on user interaction on this page itself.
+
 class HomePage extends StatelessWidget {
-  // Callback function to add a book to the cart (passed from MainNavigator)
   final Function(Book) onAddToCart;
 
   const HomePage({super.key, required this.onAddToCart});
 
-  // Function to navigate to the BookDetailPage
   void _navigateToBookDetail(BuildContext context, Book book) {
     Navigator.push(
       context,
@@ -25,9 +21,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Filter some books to be "featured" (e.g., first 3 books)
     final List<Book> featuredBooks = mockBooks.take(3).toList();
-    // Get the list of categories
     final List<String> categories = mockCategories;
 
     return Scaffold(
@@ -36,28 +30,26 @@ class HomePage extends StatelessWidget {
           'Bookstore Home',
         ),
       ),
-      body: ListView( // Use ListView for scrollable content
+      body: ListView(
         padding: const EdgeInsets.all(15.0),
         children: [
-          // Section Title: Featured Books
           Text(
             'Featured Books',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16.0), // Spacing
+          const SizedBox(height: 16.0),
 
-          // Horizontal list for featured books
           SizedBox(
-            height: 280, // Adjust height as needed for BookCard size + padding
+            height: 280,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: featuredBooks.length,
               itemBuilder: (context, index) {
                 final book = featuredBooks[index];
                 return Padding(
-                  padding: const EdgeInsets.only(right: 12.0), // Spacing between cards
+                  padding: const EdgeInsets.only(right: 12.0),
                   child: SizedBox(
-                     width: 160, // Fixed width for horizontal cards
+                     width: 160,
                      child: BookCard(
                        book: book,
                        onTap: () => _navigateToBookDetail(context, book),
@@ -67,44 +59,40 @@ class HomePage extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 24.0), // Spacing
+          const SizedBox(height: 24.0),
 
-          // Section Title: Categories
           const Text(
             'Categories',
           ),
-          const SizedBox(height: 16.0), // Spacing
+          const SizedBox(height: 16.0),
 
-          // Grid or Wrap for categories
           Wrap(
-            spacing: 12.0, // Horizontal spacing between chips
-            runSpacing: 8.0, // Vertical spacing between lines
+            spacing: 12.0,
+            runSpacing: 8.0,
             children: categories.map((category) {
               return Chip(
                 label: Text(category),
-                backgroundColor: Colors.blue.shade50, // Light background for chips
-                side: BorderSide(color: Colors.blue.shade200), // Subtle border
+                backgroundColor: Colors.blue.shade50,
+                side: BorderSide(color: Colors.blue.shade200),
               );
             }).toList(),
           ),
 
-           const SizedBox(height: 24.0), // Spacing
+           const SizedBox(height: 24.0),
 
-           // Section Title: All Books (Example)
           const Text(
             'All Books',
           ),
-          const SizedBox(height: 16.0), // Spacing
+          const SizedBox(height: 16.0),
 
-          // Display all books using a GridView for better space utilization
           GridView.builder(
-            shrinkWrap: true, // Important inside a ListView
-            physics: const NeverScrollableScrollPhysics(), // Disable GridView's own scrolling
+            shrinkWrap: true, 
+            physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Number of columns
-              crossAxisSpacing: 16.0, // Horizontal space between cards
-              mainAxisSpacing: 16.0, // Vertical space between cards
-              childAspectRatio: 0.6, // Adjust aspect ratio (width / height)
+              crossAxisCount: 2,
+              crossAxisSpacing: 16.0,
+              mainAxisSpacing: 16.0,
+              childAspectRatio: 0.6,
             ),
             itemCount: mockBooks.length,
             itemBuilder: (context, index) {
