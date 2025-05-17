@@ -5,47 +5,47 @@ import '../models/book.dart'; // Import the Book model
 final List<Book> mockBooks = [
   const Book(
     id: '1',
-    title: 'The Hitchhiker\'s Guide to the Galaxy',
+    title: 'When We Were Real',
     author: 'Douglas Adams',
     description: 'A hilarious science fiction comedy series.',
     price: 12.99,
-    coverImageUrl: 'images/p1.jpg',
+    coverImageUrl: 'images/q1.jpg',
     genre: 'Science Fiction',
   ),
   const Book(
     id: '2',
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
+    title: 'The Death Of The Heart',
+    author: 'Elizabeth Bowen',
     description: 'A classic romance novel.',
     price: 9.99,
-    coverImageUrl: 'images/p3.jpg', // Placeholder image
+    coverImageUrl: 'images/q2.webp', // Placeholder image
     genre: 'Romance',
   ),
   const Book(
     id: '3',
-    title: '1984',
-    author: 'George Orwell',
+    title: 'Voice of the Ocean',
+    author: 'Kelsey Impicciche',
     description: 'A dystopian social science fiction novel and cautionary tale.',
     price: 10.49,
-    coverImageUrl: 'images/p2.jpeg', // Placeholder image
+    coverImageUrl: 'images/q3.jpg', // Placeholder image
     genre: 'Dystopian',
   ),
   const Book(
     id: '4',
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
+    title: 'The Maze Runner',
+    author: 'James Dashner',
     description: 'A novel about the seriousness of the issues of rape and racial inequality.',
     price: 11.99,
-    coverImageUrl: 'images/p5.jpg', // Placeholder image
+    coverImageUrl: 'images/q4.jpg', // Placeholder image
     genre: 'Classic',
   ),
    const Book(
     id: '5',
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
+    title: 'Catch-22',
+    author: 'Joseph Heller',
     description: 'A novel set in the Jazz Age on Long Island.',
     price: 8.99,
-    coverImageUrl: 'images/p6.webp', // Placeholder image
+    coverImageUrl: 'images/q5.webp', // Placeholder image
     genre: 'Classic',
   ),
    const Book(

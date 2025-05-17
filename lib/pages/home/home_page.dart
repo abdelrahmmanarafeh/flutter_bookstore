@@ -32,13 +32,12 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Bookstore Home',
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
       body: ListView( // Use ListView for scrollable content
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(15.0),
         children: [
           // Section Title: Featured Books
           Text(
@@ -71,9 +70,8 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 24.0), // Spacing
 
           // Section Title: Categories
-          Text(
+          const Text(
             'Categories',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16.0), // Spacing
 
@@ -84,9 +82,7 @@ class HomePage extends StatelessWidget {
             children: categories.map((category) {
               return Chip(
                 label: Text(category),
-                backgroundColor: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.blue.shade900 // Darker background in dark mode
-                    : Colors.blue.shade50, // Light background for chips
+                backgroundColor: Colors.blue.shade50, // Light background for chips
                 side: BorderSide(color: Colors.blue.shade200), // Subtle border
               );
             }).toList(),
@@ -95,9 +91,8 @@ class HomePage extends StatelessWidget {
            const SizedBox(height: 24.0), // Spacing
 
            // Section Title: All Books (Example)
-          Text(
+          const Text(
             'All Books',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16.0), // Spacing
 

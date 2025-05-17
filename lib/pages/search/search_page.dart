@@ -100,13 +100,10 @@ class _SearchPageState extends State<SearchPage> {
                         icon: const Icon(Icons.clear),
                         onPressed: () {
                           _searchController.clear(); // Clears the text field
-                          // _performSearch(); // Optionally re-run search to update results
                         },
                       )
                     : null,
               ),
-              // Optional: Trigger search on submit if not using listener
-              // onSubmitted: (value) => _performSearch(),
             ),
           ),
 

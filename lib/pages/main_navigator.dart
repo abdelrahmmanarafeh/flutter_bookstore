@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // Import shared_preferences
 import 'dart:convert'; // Import dart:convert for JSON encoding/decoding
 
-import '../provider/theme_provider.dart';
 import '../models/book.dart'; // Import Book model
 import 'home/home_page.dart';
 import 'search/search_page.dart';
@@ -143,8 +141,6 @@ class _MainNavigatorState extends State<MainNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeProvider>(
-      builder: (context, themeProvider, child) {
         return Scaffold(
           body: IndexedStack(
              index: _selectedIndex,
@@ -170,9 +166,7 @@ class _MainNavigatorState extends State<MainNavigator> {
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: Theme.of(context).brightness == Brightness.dark
-                ? Colors.amberAccent
-                : Theme.of(context).primaryColor,
+            selectedItemColor: const Color.fromARGB(255, 147, 27, 174),
             unselectedItemColor: Colors.grey,
             showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
@@ -180,12 +174,9 @@ class _MainNavigatorState extends State<MainNavigator> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              themeProvider.toggleTheme(!themeProvider.isDarkMode);
             },
             child: const Icon(Icons.brightness_6),
           ),
         );
-      }
-    );
   }
 }
