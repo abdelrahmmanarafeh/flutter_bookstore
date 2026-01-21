@@ -12,3 +12,8 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+# Firebase Config Files (DO NOT UPLOAD THESE)
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+lib/firebase_options.dart

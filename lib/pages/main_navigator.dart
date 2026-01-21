@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-
 import '../models/book.dart';
 import 'home/home_page.dart';
 import 'search/search_page.dart';
@@ -13,6 +12,7 @@ class MainNavigator extends StatefulWidget {
 
   @override
   State<MainNavigator> createState() => _MainNavigatorState();
+  //The state class (_MainNavigatorState) — this holds mutable state and logic
 }
 
 class _MainNavigatorState extends State<MainNavigator> {
